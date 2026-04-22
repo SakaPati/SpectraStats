@@ -1,0 +1,5 @@
+name: SpectraStats
+version: '1.0-SNAPSHOT'
+main: ru.fozeton.spectraStats.SpectraStats
+api-version: '1.21.4'
+authors: [ Fozeton ]
