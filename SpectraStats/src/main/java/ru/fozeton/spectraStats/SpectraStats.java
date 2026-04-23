@@ -3,16 +3,21 @@ package ru.fozeton.spectraStats;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.fozeton.spectraStats.events.PlayerConnection;
 import ru.fozeton.spectraStats.events.PlayerStatistic;
+import ru.fozeton.spectraStats.events.StatisticCollector;
+import ru.fozeton.spectraStats.events.StatsRegistry;
 
 import java.util.logging.Logger;
 
 public final class SpectraStats extends JavaPlugin {
-    private final Logger LOGGER = Logger.getLogger("Minecraft");
-    private final HttpSender httpSender = new HttpSender(LOGGER);
 
     @Override
     public void onEnable() {
-        new PlayerStatistic(this, LOGGER, httpSender).statistics();
+        Logger logger = Logger.getLogger("Minecraft");
+        HttpSender httpSender = new HttpSender(logger);
+        StatsRegistry registry = new StatsRegistry();
+        StatisticCollector collector = new StatisticCollector(registry);
+
+        new PlayerStatistic(this, logger, httpSender, registry, collector).statistics();
         getServer().getPluginManager().registerEvents(new PlayerConnection(httpSender), this);
     }
 
