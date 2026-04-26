@@ -7,19 +7,22 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import ru.fozeton.spectraStats.Messages;
+import ru.fozeton.spectraStats.statistic.stats.DistanceStat;
+import ru.fozeton.spectraStats.statistic.stats.MessageStat;
+import ru.fozeton.spectraStats.statistic.stats.VanillaStat;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.Spliterators;
 import java.util.stream.StreamSupport;
 
 public class StatsRegistry {
+    public final EventTracker<Message> messageTracker = new EventTracker<>();
+
     public final List<VanillaStat> COMBAT;
-    public final List<IStat<?>> INTERACT;
+    public final List<IStat> INTERACT;
     public final List<VanillaStat> WORLD;
-    public final List<VanillaStat> SURVIVAL;
+    public final List<IStat> SURVIVAL;
 
     public final List<Material> MATERIALS = Arrays.stream(Material.values())
             .filter(Material::isItem)
@@ -48,46 +51,60 @@ public class StatsRegistry {
             .filter(e -> e.getEntityClass() != null && LivingEntity.class.isAssignableFrom(e.getEntityClass()))
             .toList();
 
-    public StatsRegistry(Messages messages) {
+    public StatsRegistry() {
         this.COMBAT = List.of(
-                new VanillaStat(Statistic.DEATHS),
-                new VanillaStat(Statistic.ENTITY_KILLED_BY),
-                new VanillaStat(Statistic.DAMAGE_DEALT),
-                new VanillaStat(Statistic.DAMAGE_TAKEN),
-                new VanillaStat(Statistic.KILL_ENTITY)
+                VanillaStat.builder(Statistic.DEATHS, StatContext.COMBAT).build(),
+                VanillaStat.builder(Statistic.ENTITY_KILLED_BY, StatContext.COMBAT).entityTypes(ENTITY).build(),
+                VanillaStat.builder(Statistic.DAMAGE_DEALT, StatContext.COMBAT).build(),
+                VanillaStat.builder(Statistic.DAMAGE_TAKEN, StatContext.COMBAT).build(),
+                VanillaStat.builder(Statistic.KILL_ENTITY, StatContext.COMBAT).entityTypes(ENTITY).build()
         );
 
         this.INTERACT = List.of(
-                new VanillaStat(Statistic.CHEST_OPENED),
-                new VanillaStat(Statistic.ENDERCHEST_OPENED),
-                new VanillaStat(Statistic.SHULKER_BOX_OPENED),
-                new VanillaStat(Statistic.FURNACE_INTERACTION),
-                new VanillaStat(Statistic.CRAFTING_TABLE_INTERACTION),
-                new VanillaStat(Statistic.ITEM_ENCHANTED),
-                new VanillaStat(Statistic.FISH_CAUGHT),
-                new VanillaStat(Statistic.MINE_BLOCK),
-                new VanillaStat(Statistic.CRAFT_ITEM),
-                new VanillaStat(Statistic.USE_ITEM),
-                new CustomStat<>("CHAT_MESSAGE", messages.getMessages(), Messages.Message.class)
+                VanillaStat.builder(Statistic.CHEST_OPENED, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.ENDERCHEST_OPENED, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.SHULKER_BOX_OPENED, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.FURNACE_INTERACTION, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.CRAFTING_TABLE_INTERACTION, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.ITEM_ENCHANTED, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.FISH_CAUGHT, StatContext.INTERACT).build(),
+                VanillaStat.builder(Statistic.MINE_BLOCK, StatContext.INTERACT).materials(BLOCKS).build(),
+                VanillaStat.builder(Statistic.CRAFT_ITEM, StatContext.INTERACT).materials(RECIPE_ITEMS).build(),
+                VanillaStat.builder(Statistic.USE_ITEM, StatContext.INTERACT).materials(BLOCKS).build(),
+                new MessageStat("CHAT_MESSAGE", messageTracker.getStorage())
         );
 
         this.WORLD = List.of(
-                new VanillaStat(Statistic.ANIMALS_BRED),
-                new VanillaStat(Statistic.RAID_WIN),
-                new VanillaStat(Statistic.TRADED_WITH_VILLAGER),
-                new VanillaStat(Statistic.DROP),
-                new VanillaStat(Statistic.PICKUP)
+                VanillaStat.builder(Statistic.ANIMALS_BRED, StatContext.WORLD).build(),
+                VanillaStat.builder(Statistic.RAID_WIN, StatContext.WORLD).build(),
+                VanillaStat.builder(Statistic.TRADED_WITH_VILLAGER, StatContext.WORLD).build(),
+                VanillaStat.builder(Statistic.DROP, StatContext.WORLD).materials(MATERIALS).build(),
+                VanillaStat.builder(Statistic.PICKUP, StatContext.WORLD).materials(MATERIALS).build()
         );
 
-        Set<Statistic> SURVIVAL_WHITELIST = Set.of(
-                Statistic.USE_ITEM,
-                Statistic.SLEEP_IN_BED,
-                Statistic.BREAK_ITEM
+        this.SURVIVAL = List.of(
+                VanillaStat.builder(Statistic.WALK_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.WALK_ON_WATER_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.FALL_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.CLIMB_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.FLY_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.WALK_UNDER_WATER_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.MINECART_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.BOAT_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.PIG_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.HORSE_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.SPRINT_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.CROUCH_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.AVIATE_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.SWIM_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.STRIDER_ONE_CM, StatContext.SURVIVAL).build(),
+                VanillaStat.builder(Statistic.SLEEP_IN_BED, StatContext.SURVIVAL).build(),
+                new DistanceStat(),
+                VanillaStat.builder(Statistic.USE_ITEM, StatContext.SURVIVAL).materials(FOODS).build(),
+                VanillaStat.builder(Statistic.BREAK_ITEM, StatContext.SURVIVAL).materials(EQUIPMENT).build()
         );
+    }
 
-        this.SURVIVAL = Arrays.stream(Statistic.values())
-                .filter(s -> s.name().contains("CM") || SURVIVAL_WHITELIST.contains(s))
-                .map(VanillaStat::new)
-                .toList();
+    public record Message(String message, String timestamp) {
     }
 }

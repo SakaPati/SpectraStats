@@ -39,24 +39,24 @@ public class PlayerStatistic implements Listener {
                 logger.info(json);
 
 //                    sender.postDate("/player/statistic/", json);
-//                    logger.info("Статистика отправлена");
             }
+            registry.messageTracker.clear();
         }, 0, 15, TimeUnit.SECONDS);
     }
 
     private Map<String, Object> survival(Player player) {
-        return collector.collect(player, registry.SURVIVAL, StatContext.SURVIVAL);
+        return collector.collect(player, registry.SURVIVAL);
     }
 
     private Map<String, Object> combat(Player player) {
-        return collector.collect(player, registry.COMBAT, StatContext.COMBAT);
+        return collector.collect(player, registry.COMBAT);
     }
 
     private Map<String, Object> interaction(Player player) {
-        return collector.collect(player, registry.INTERACT, StatContext.INTERACT);
+        return collector.collect(player, registry.INTERACT);
     }
 
     private Map<String, Object> world(Player player) {
-        return collector.collect(player, registry.WORLD, StatContext.WORLD);
+        return collector.collect(player, registry.WORLD);
     }
 }

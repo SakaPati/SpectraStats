@@ -14,15 +14,14 @@ public final class SpectraStats extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Messages messages = new Messages();
         Logger logger = Logger.getLogger("Minecraft");
         HttpSender httpSender = new HttpSender(logger);
-        StatsRegistry registry = new StatsRegistry(messages);
-        StatisticCollector collector = new StatisticCollector(registry);
+        StatsRegistry registry = new StatsRegistry();
+        StatisticCollector collector = new StatisticCollector();
 
         new PlayerStatistic(this, logger, httpSender, registry, collector).statistics();
         getServer().getPluginManager().registerEvents(new PlayerConnection(httpSender), this);
-        getServer().getPluginManager().registerEvents(new PlayerSendMessage(messages), this);
+        getServer().getPluginManager().registerEvents(new PlayerSendMessage(registry), this);
     }
 
     @Override

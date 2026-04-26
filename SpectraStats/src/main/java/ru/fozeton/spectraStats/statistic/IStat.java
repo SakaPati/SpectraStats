@@ -1,8 +1,8 @@
 package ru.fozeton.spectraStats.statistic;
 
-public interface IStat<T> {
-    boolean isSystem();
+import org.bukkit.entity.Player;
+
+public interface IStat {
     String name();
-    T getStat();
-    Class<?> getType();
+    Object getStat(Player player);
 }
