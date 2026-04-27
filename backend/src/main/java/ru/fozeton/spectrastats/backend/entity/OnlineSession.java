@@ -15,7 +15,7 @@ public class OnlineSession {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "player_name")
     private Player player;
 

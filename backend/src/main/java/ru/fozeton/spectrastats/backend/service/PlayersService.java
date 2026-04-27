@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.fozeton.spectrastats.backend.entity.OnlineSession;
 import ru.fozeton.spectrastats.backend.entity.Player;
 import ru.fozeton.spectrastats.backend.exceptions.PlayerNotFound;
+import ru.fozeton.spectrastats.backend.model.PlayerStatistic;
 import ru.fozeton.spectrastats.backend.repository.OnlineRepo;
 import ru.fozeton.spectrastats.backend.repository.PlayerRepo;
 
@@ -38,5 +39,9 @@ public class PlayersService {
         OnlineSession session = player.getSession().getLast();
         session.setExitTime(System.currentTimeMillis());
         onlineRepo.save(session);
+    }
+
+    public void updateStats(PlayerStatistic statistic) {
+
     }
 }

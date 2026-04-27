@@ -5,6 +5,6 @@ import ru.fozeton.spectrastats.backend.entity.Player;
 
 import java.util.Optional;
 
-public interface PlayerRepo extends JpaRepository<Player, Long> {
+public interface PlayerRepo extends JpaRepository<Player, String> {
     Optional<Player> findByPlayerName(String playerName);
 }

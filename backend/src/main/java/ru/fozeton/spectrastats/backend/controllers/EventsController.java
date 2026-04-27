@@ -1,10 +1,10 @@
 package ru.fozeton.spectrastats.backend.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ru.fozeton.spectrastats.backend.model.PlayerStatistic;
 import ru.fozeton.spectrastats.backend.service.PlayersService;
 
 @RestController
@@ -17,8 +17,15 @@ public class EventsController {
     public void connect(@PathVariable String player) {
         playersService.connect(player);
     }
+
     @PostMapping("/disconnect/{player}")
     public void disconnect(@PathVariable String player) {
         playersService.disconnect(player);
+    }
+
+    @PostMapping("/statistic")
+    public ResponseEntity<?> statistic(@Valid @RequestBody PlayerStatistic statistic) {
+        playersService.updateStats(statistic);
+        return ResponseEntity.ok().build();
     }
 }
