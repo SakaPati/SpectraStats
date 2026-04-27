@@ -11,9 +11,8 @@ public class StatisticCollector {
         Map<String, Object> statMap = new LinkedHashMap<>();
         for (IStat s : statistics) {
             Object stat = s.getStat(player);
-
-            if (stat instanceof Integer value) statMap.put(s.name(), value);
-            else statMap.put(s.name(), stat);
+            if (stat instanceof Integer value && value == 0) continue;
+            statMap.put(s.name(), stat);
         }
         return statMap;
     }

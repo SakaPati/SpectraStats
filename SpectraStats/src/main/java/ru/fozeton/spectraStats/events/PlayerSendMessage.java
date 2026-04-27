@@ -12,7 +12,7 @@ public record PlayerSendMessage(StatsRegistry registry) implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncChatEvent event) {
-        registry.messageTracker.add(event.getPlayer().getName(), new StatsRegistry.Message(
+        registry.getMessageTracker().add(event.getPlayer().getName(), new StatsRegistry.Message(
                 PlainTextComponentSerializer.plainText().serialize(event.message()),
                 LocalDateTime.now().toString()));
     }

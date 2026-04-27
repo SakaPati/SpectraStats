@@ -1,5 +1,6 @@
 package ru.fozeton.spectraStats.statistic;
 
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -17,39 +18,33 @@ import java.util.Spliterators;
 import java.util.stream.StreamSupport;
 
 public class StatsRegistry {
-    public final EventTracker<Message> messageTracker = new EventTracker<>();
-
-    public final List<VanillaStat> COMBAT;
+    public final List<IStat> COMBAT;
     public final List<IStat> INTERACT;
-    public final List<VanillaStat> WORLD;
+    public final List<IStat> WORLD;
     public final List<IStat> SURVIVAL;
-
     public final List<Material> MATERIALS = Arrays.stream(Material.values())
             .filter(Material::isItem)
             .toList();
-
     public final List<Material> BLOCKS = Arrays.stream(Material.values())
             .filter(m -> m.isBlock() && !m.isAir())
             .toList();
-
     public final List<Material> RECIPE_ITEMS = StreamSupport
             .stream(Spliterators.spliteratorUnknownSize(Bukkit.recipeIterator(), 0), false)
             .filter(r -> r instanceof ShapedRecipe || r instanceof ShapelessRecipe)
             .map(r -> r.getResult().getType())
             .distinct()
             .toList();
-
     public final List<Material> EQUIPMENT = Arrays.stream(Material.values())
             .filter(m -> m.getMaxDurability() > 0)
             .toList();
-
     public final List<Material> FOODS = Arrays.stream(Material.values())
             .filter(m -> m.isEdible() && m.isItem())
             .toList();
-
     public final List<EntityType> ENTITY = Arrays.stream(EntityType.values())
             .filter(e -> e.getEntityClass() != null && LivingEntity.class.isAssignableFrom(e.getEntityClass()))
             .toList();
+    @Getter
+    private final EventTracker<Message> messageTracker = new EventTracker<>();
 
     public StatsRegistry() {
         this.COMBAT = List.of(

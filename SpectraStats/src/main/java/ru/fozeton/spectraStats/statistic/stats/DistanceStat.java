@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import ru.fozeton.spectraStats.statistic.IStat;
 
 public class DistanceStat implements IStat {
-    private final Statistic[] statistics = {
+    private final Statistic[] STATISTICS = {
             Statistic.WALK_ONE_CM,
             Statistic.WALK_ON_WATER_ONE_CM,
             Statistic.FALL_ONE_CM,
@@ -32,7 +32,7 @@ public class DistanceStat implements IStat {
     public Object getStat(Player player) {
         int totalSum = 0;
 
-        for (Statistic s : statistics) totalSum += player.getStatistic(s);
+        for (Statistic s : STATISTICS) totalSum += player.getStatistic(s);
         return totalSum / 100;
     }
 }
