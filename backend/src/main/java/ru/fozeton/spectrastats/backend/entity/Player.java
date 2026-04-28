@@ -22,7 +22,7 @@ public class Player {
     private List<OnlineSession> session = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "player")
-    private PlayerStats statistic;
+    private PlayerStats statistic = new PlayerStats();
 
     @Setter(AccessLevel.NONE)
     private LocalDateTime timestamp = LocalDateTime.now();
