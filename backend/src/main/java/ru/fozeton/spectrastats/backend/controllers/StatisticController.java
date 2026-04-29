@@ -15,7 +15,7 @@ import ru.fozeton.spectrastats.backend.service.StatisticService;
 public class StatisticController {
     private final StatisticService statisticService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<PlayerStats> statistic(@PathVariable String player) {
         return ResponseEntity.ok(statisticService.getStatistic(player));
     }
