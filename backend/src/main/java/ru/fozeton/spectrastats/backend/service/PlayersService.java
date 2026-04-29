@@ -12,8 +12,10 @@ import ru.fozeton.spectrastats.backend.repository.OnlineRepo;
 import ru.fozeton.spectrastats.backend.repository.PlayerRepo;
 import ru.fozeton.spectrastats.backend.repository.PlayerStatsRepo;
 
-@RequiredArgsConstructor
+import java.time.LocalDateTime;
+
 @Service
+@RequiredArgsConstructor
 public class PlayersService {
     private final PlayerRepo playerRepo;
     private final OnlineRepo onlineRepo;
@@ -43,7 +45,7 @@ public class PlayersService {
         Player player = playerRepo.findByPlayerName(playerName)
                 .orElseThrow(() -> new PlayerNotFound("Player not found"));
         OnlineSession session = player.getSession().getLast();
-        session.setExitTime(System.currentTimeMillis());
+        session.setExitTime(LocalDateTime.now().toString());
         onlineRepo.save(session);
     }
 

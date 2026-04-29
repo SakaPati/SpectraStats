@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -20,6 +22,6 @@ public class OnlineSession {
     private Player player;
 
     @Setter(AccessLevel.NONE)
-    private Long entryTime = System.currentTimeMillis();
-    private Long exitTime;
+    private String entryTime = LocalDateTime.now().toString();
+    private String exitTime;
 }
