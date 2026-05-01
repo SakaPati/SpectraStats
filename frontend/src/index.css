@@ -1,0 +1,42 @@
+/* Переменные для удобного использования в других модулях */
+:root {
+  --app-bg: #0b0d11;        /* Очень глубокий фон */
+  --card-bg: #161922;       /* Фон для карточек/инпутов */
+  --text-main: #f8fafc;     /* Белый текст (чуть мягкий) */
+  --text-muted: #94a3b8;    /* Вторичный текст */
+  --accent: #6366f1;        /* Тот самый Indigo акцент */
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--text-main);
+  /* Системные шрифты без засечек — стандарт минимализма */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Стилизация скроллбара, чтобы он не выбивался */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--app-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3343;
+  border-radius: 5px;
+  border: 2px solid var(--app-bg); /* Создает эффект отступа */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d445a;
+}
+
+/* Выделение текста */
+::selection {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: #fff;
+}

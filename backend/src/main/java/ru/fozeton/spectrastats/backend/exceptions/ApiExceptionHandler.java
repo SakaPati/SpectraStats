@@ -30,9 +30,9 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(PlayerNotFound.class)
-    public ResponseEntity<ErrorMessage> playerNotFoundException(PlayerNotFound ex) {
+    public ResponseEntity<?> playerNotFoundException(PlayerNotFound ex) {
         log.error(ex.getMessage(), ex);
-        return ResponseEntity.badRequest().body(new ErrorMessage(ex.getMessage()));
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(UnknownStatisticType.class)
@@ -42,9 +42,9 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(StatisticNotFoundInPlayer.class)
-    public ResponseEntity<ErrorMessage> statisticNotFoundInPlayerException(StatisticNotFoundInPlayer ex) {
+    public ResponseEntity<?> statisticNotFoundInPlayerException(StatisticNotFoundInPlayer ex) {
         log.error(ex.getMessage(), ex);
-        return ResponseEntity.badRequest().body(new ErrorMessage(ex.getMessage()));
+        return ResponseEntity.notFound().build();
     }
 
     public record ErrorMessage(

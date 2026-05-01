@@ -1,0 +1,298 @@
+export const Stats = (type) => {
+  switch (type) {
+    case "Fozeton":
+      return {
+        data: {
+          id: "Fozeton",
+          world: {
+            DROP: {
+              BEEF: 5,
+              BONE: 2,
+              DIRT: 15,
+              ARROW: 2,
+              CHEST: 1,
+              STICK: 2,
+              CHICKEN: 4,
+              FEATHER: 7,
+              LEATHER: 7,
+              PORKCHOP: 4,
+              GRAY_WOOL: 1,
+              WHITE_WOOL: 2,
+              WOODEN_AXE: 1,
+              BLUE_ORCHID: 3,
+              FISHING_ROD: 1,
+              OAK_SAPLING: 4,
+              WHEAT_SEEDS: 2,
+              BROWN_MUSHROOM: 5,
+              CRAFTING_TABLE: 1,
+              WOODEN_PICKAXE: 1,
+              TOTAL_DROP_ITEMS: 70,
+            },
+            PICKUP: {
+              EGG: 2,
+              BEEF: 7,
+              BONE: 2,
+              DIRT: 16,
+              ARROW: 2,
+              CHEST: 1,
+              STICK: 2,
+              MUTTON: 4,
+              CHICKEN: 7,
+              FEATHER: 7,
+              LEATHER: 7,
+              OAK_LOG: 5,
+              LILY_PAD: 1,
+              PORKCHOP: 6,
+              GRAY_WOOL: 1,
+              WHITE_WOOL: 2,
+              BLUE_ORCHID: 3,
+              OAK_SAPLING: 4,
+              WHEAT_SEEDS: 2,
+              ROTTEN_FLESH: 2,
+              BROWN_MUSHROOM: 5,
+              CRAFTING_TABLE: 1,
+              TOTAL_PICKUP_ITEMS: 89,
+            },
+            properties: {},
+          },
+          survival: {
+            EATEN: {
+              BEEF: 2,
+              MUTTON: 4,
+              CHICKEN: 3,
+              PORKCHOP: 1,
+              TOTAL_EATEN: 12,
+              ROTTEN_FLESH: 2,
+            },
+            BREAK_ITEM: {
+              DIAMOND_SWORD: 1,
+              TOTAL_BREAK_ITEMS: 1,
+            },
+            properties: {
+              FLY_ONE_CM: 2233,
+              FALL_ONE_CM: 190,
+              SWIM_ONE_CM: 87,
+              WALK_ONE_CM: 130,
+              CLIMB_ONE_CM: 85,
+              CROUCH_ONE_CM: 12,
+              SPRINT_ONE_CM: 672,
+              WALK_ON_WATER_ONE_CM: 27,
+              TOTAL_DISTANCE_TRAVELED: 3441,
+            },
+          },
+          interact: {
+            MINE_BLOCK: {
+              CHEST: 1,
+              OAK_LOG: 5,
+              LILY_PAD: 2,
+              SEAGRASS: 26,
+              DEAD_BUSH: 2,
+              OAK_LEAVES: 10,
+              BLUE_ORCHID: 3,
+              GRASS_BLOCK: 1,
+              SHORT_GRASS: 17,
+              BIRCH_LEAVES: 1,
+              TALL_SEAGRASS: 45,
+              BROWN_MUSHROOM: 6,
+              CRAFTING_TABLE: 1,
+              TOTAL_BREAK_BLOCKS: 120,
+            },
+            CRAFT_ITEM: {
+              CHEST: 1,
+              STICK: 4,
+              OAK_PLANKS: 20,
+              WOODEN_AXE: 1,
+              CRAFTING_TABLE: 1,
+              WOODEN_PICKAXE: 1,
+              TOTAL_CRAFT_ITEMS: 28,
+            },
+            PLACED_BLOCKS: {
+              DIRT: 1,
+              CHEST: 1,
+              CRAFTING_TABLE: 1,
+              TOTAL_PLACED_BLOCKS: 3,
+            },
+            properties: {
+              CHEST_OPENED: 43,
+              CRAFTING_TABLE_INTERACTION: 7,
+            },
+          },
+          combat: {
+            ENTITY_KILLED_BY: {
+              BOGGED: 1,
+              SPIDER: 1,
+              ZOMBIE: 1,
+              TOTAL_KILLED: 3,
+            },
+            KILL_ENTITY: {
+              COW: 6,
+              PIG: 4,
+              FROG: 2,
+              SHEEP: 5,
+              BOGGED: 1,
+              CHICKEN: 7,
+              TOTAL_KILLS: 25,
+            },
+            properties: {
+              DEATHS: 4,
+              DAMAGE_DEALT: 224,
+              DAMAGE_TAKEN: 128,
+            },
+          },
+        },
+      };
+    case "world":
+      return {
+        data: {
+          DROP: {
+            BEEF: 5,
+            BONE: 2,
+            DIRT: 15,
+            ARROW: 2,
+            CHEST: 1,
+            STICK: 2,
+            CHICKEN: 4,
+            FEATHER: 7,
+            LEATHER: 7,
+            PORKCHOP: 4,
+            GRAY_WOOL: 1,
+            WHITE_WOOL: 2,
+            WOODEN_AXE: 1,
+            BLUE_ORCHID: 3,
+            FISHING_ROD: 1,
+            OAK_SAPLING: 4,
+            WHEAT_SEEDS: 2,
+            BROWN_MUSHROOM: 5,
+            CRAFTING_TABLE: 1,
+            WOODEN_PICKAXE: 1,
+            TOTAL_DROP_ITEMS: 70,
+          },
+          PICKUP: {
+            EGG: 2,
+            BEEF: 7,
+            BONE: 2,
+            DIRT: 16,
+            ARROW: 2,
+            CHEST: 1,
+            STICK: 2,
+            MUTTON: 4,
+            CHICKEN: 7,
+            FEATHER: 7,
+            LEATHER: 7,
+            OAK_LOG: 5,
+            LILY_PAD: 1,
+            PORKCHOP: 6,
+            GRAY_WOOL: 1,
+            WHITE_WOOL: 2,
+            BLUE_ORCHID: 3,
+            OAK_SAPLING: 4,
+            WHEAT_SEEDS: 2,
+            ROTTEN_FLESH: 2,
+            BROWN_MUSHROOM: 5,
+            CRAFTING_TABLE: 1,
+            TOTAL_PICKUP_ITEMS: 89,
+          },
+          properties: {},
+        },
+      };
+
+    case "survival":
+      return {
+        data: {
+          EATEN: {
+            BEEF: 2,
+            MUTTON: 4,
+            CHICKEN: 3,
+            PORKCHOP: 1,
+            TOTAL_EATEN: 12,
+            ROTTEN_FLESH: 2,
+          },
+          BREAK_ITEM: {
+            DIAMOND_SWORD: 1,
+            TOTAL_BREAK_ITEMS: 1,
+          },
+          properties: {
+            FLY_ONE_CM: 2233,
+            FALL_ONE_CM: 190,
+            SWIM_ONE_CM: 87,
+            WALK_ONE_CM: 130,
+            CLIMB_ONE_CM: 85,
+            CROUCH_ONE_CM: 12,
+            SPRINT_ONE_CM: 672,
+            WALK_ON_WATER_ONE_CM: 27,
+            TOTAL_DISTANCE_TRAVELED: 3441,
+          },
+        },
+      };
+
+    case "interact":
+      return {
+        data: {
+          MINE_BLOCK: {
+            CHEST: 1,
+            OAK_LOG: 5,
+            LILY_PAD: 2,
+            SEAGRASS: 26,
+            DEAD_BUSH: 2,
+            OAK_LEAVES: 10,
+            BLUE_ORCHID: 3,
+            GRASS_BLOCK: 1,
+            SHORT_GRASS: 17,
+            BIRCH_LEAVES: 1,
+            TALL_SEAGRASS: 45,
+            BROWN_MUSHROOM: 6,
+            CRAFTING_TABLE: 1,
+            TOTAL_BREAK_BLOCKS: 120,
+          },
+          CRAFT_ITEM: {
+            CHEST: 1,
+            STICK: 4,
+            OAK_PLANKS: 20,
+            WOODEN_AXE: 1,
+            CRAFTING_TABLE: 1,
+            WOODEN_PICKAXE: 1,
+            TOTAL_CRAFT_ITEMS: 28,
+          },
+          PLACED_BLOCKS: {
+            DIRT: 1,
+            CHEST: 1,
+            CRAFTING_TABLE: 1,
+            TOTAL_PLACED_BLOCKS: 3,
+          },
+          properties: {
+            CHEST_OPENED: 43,
+            CRAFTING_TABLE_INTERACTION: 7,
+          },
+        },
+      };
+
+    case "combat":
+      return {
+        data: {
+          ENTITY_KILLED_BY: {
+            BOGGED: 1,
+            SPIDER: 1,
+            ZOMBIE: 1,
+            TOTAL_KILLED: 3,
+          },
+          KILL_ENTITY: {
+            COW: 6,
+            PIG: 4,
+            FROG: 2,
+            SHEEP: 5,
+            BOGGED: 1,
+            CHICKEN: 7,
+            TOTAL_KILLS: 25,
+          },
+          properties: {
+            DEATHS: 4,
+            DAMAGE_DEALT: 224,
+            DAMAGE_TAKEN: 128,
+          },
+        },
+      };
+
+    default:
+      return null;
+  }
+};

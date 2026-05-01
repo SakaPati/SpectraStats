@@ -1,0 +1,21 @@
+{
+  "MINE_BLOCK": "Сломанные блоки",
+  "PLACED_BLOCKS": "Поставленные блоки",
+  "CRAFT_ITEM": "Созданые предметы",
+  "PICKUP": "Подобранные предметы",
+  "EATEN": "Съедено",
+  "BREAK_ITEM": "Сломано экипировки",
+  "ENTITY_KILLED_BY": "Смертей от рук монстров",
+  "KILL_ENTITY": "Убито существ",
+  "TOTAL_KILLS": "Всего убийств",
+  "TOTAL_KILLED": "Всего смертей от монстров",
+  "TOTAL_DROP_ITEMS": "Всего выброшено предметов",
+  "TOTAL_PICKUP_ITEMS": "Всего подобранно предметов",
+  "TOTAL_DISTANCE_TRAVELED": "Общая пройденная дистанция",
+  "TOTAL_EATEN": "Всего съедено",
+  "TOTAL_BREAK_ITEMS": "Всего сломано экипировки",
+  "TOTAL_CRAFT_ITEMS": "Всего создано предметов",
+  "TOTAL_PLACED_BLOCKS": "Всего поставлено блоков",
+  "TOTAL_BREAK_BLOCKS": "Всего сломано блоков",
+  "properties": "Дополнительное"
+}

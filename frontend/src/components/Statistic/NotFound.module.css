@@ -1,0 +1,64 @@
+.errorSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.errorCode {
+  font-size: clamp(5rem, 15vw, 10rem);
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(to bottom, #374151, #111827);
+  background-clip: text;
+  color: transparent;
+  opacity: 0.4;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: -20px 0 0 0;
+  color: #fff;
+}
+
+.message {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  max-width: 450px;
+  line-height: 1.6;
+  margin-inline: auto;
+  padding-bottom: 20px;
+}
+
+.highlight {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.backLink {
+  margin-top: 2rem;
+  color: #6366f1;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.backLink:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}

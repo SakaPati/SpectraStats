@@ -3,6 +3,8 @@ import { Container } from "../Container/Container";
 import { useEffect, useState } from "react";
 import { Globe, Heart, Swords, Hand, ArrowLeft, icons } from "lucide-react";
 import axios from "axios";
+import s from "./Statistic.module.css";
+import { Stats } from "../assets/stats";
 
 export const Statistic = () => {
   const [statistic, setStatistic] = useState(null);
@@ -11,8 +13,12 @@ export const Statistic = () => {
 
   useEffect(() => {
     const handleStatistic = async () => {
-      const result = await axios.get(`/api/statistic/${param.player}`);
-      setStatistic(result.data);
+      try {
+        const result = Stats(param.player) || (await axios.get(`/api/statistic/${param.player}`));
+        setStatistic(result.data);
+      } catch (error) {
+        navigate("notFound");
+      }
     };
     handleStatistic();
   }, [param.player]);
@@ -44,7 +50,7 @@ export const Statistic = () => {
         },
         {
           name: "Всего съедено еды",
-          value: statistic.survival.USE_ITEM.TOTAL_EATEN || 0,
+          value: statistic.survival.EATEN.TOTAL_EATEN || 0,
         },
         {
           name: "Всего сломано экипировки",
@@ -53,7 +59,7 @@ export const Statistic = () => {
       ],
     },
     {
-      id: "interactive",
+      id: "interact",
       icon: Hand,
       properties: [
         {
@@ -66,7 +72,7 @@ export const Statistic = () => {
         },
         {
           name: "Всего поставленно блоков",
-          value: statistic.interact.USE_ITEM.TOTAL_PLACED_BLOCKS || 0,
+          value: statistic.interact.PLACED_BLOCKS.TOTAL_PLACED_BLOCKS || 0,
         },
       ],
     },
@@ -91,27 +97,27 @@ export const Statistic = () => {
   ];
 
   return (
-    <section>
+    <section className={s.section}>
       <Container>
-        <div>
+        <div className={s.playerInfo}>
           <img src={`https://mc-heads.net/avatar/${param.player}/64`} alt={`${param.player}`} />
           <h1>{`${param.player}`}</h1>
           <p>Статистика игрока</p>
         </div>
 
-        <ul>
+        <ul className={s.categoryList}>
           {category.map(({ id, icon, properties }) => {
             const Icon = icon;
 
             return (
-              <li key={id} onClick={() => navigate(id)}>
-                <div>
+              <li key={id} className={s.categoryItem} onClick={() => navigate(id)}>
+                <div className={s.iconBox}>
                   <Icon size={24} />
                 </div>
 
                 <h1>{id.toUpperCase()}</h1>
 
-                <div>
+                <div className={s.propList}>
                   {properties.map(({ name, value }) => (
                     <p key={name}>
                       {name} <span>{value}</span>

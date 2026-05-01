@@ -1,0 +1,73 @@
+.detailSection {
+  padding: 2rem 0;
+  color: #f8fafc;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.groupCard {
+  background: #161922;
+  border: 1px solid #2d3343;
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.groupTitle {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #2d3343;
+  display: flex;
+  align-items: center;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.statRow:last-child {
+  border-bottom: none;
+}
+
+.statRow span {
+  color: #e2e8f0;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  background: #1e2231;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.statRow:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+}
