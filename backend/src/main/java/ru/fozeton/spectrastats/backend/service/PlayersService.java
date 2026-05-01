@@ -13,6 +13,7 @@ import ru.fozeton.spectrastats.backend.repository.PlayerRepo;
 import ru.fozeton.spectrastats.backend.repository.PlayerStatsRepo;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -57,5 +58,9 @@ public class PlayersService {
         stats.setInteract(statistic.interact());
         stats.setCombat(statistic.combat());
         statsRepo.save(stats);
+    }
+
+    public List<String> suggestPlayers(String nick) {
+        return playerRepo.findFirst10ByPlayerNameContaining(nick).stream().map(Player::getPlayerName).toList();
     }
 }

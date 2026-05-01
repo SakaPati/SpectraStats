@@ -1,5 +1,22 @@
 export const Stats = (type) => {
   switch (type) {
+    case "Foz":
+      return {
+        data: [
+          "Fozeton",
+          "FOzerator",
+          "FozzyRage",
+          "FozQuantum",
+          "FozLord",
+          "FozNix",
+          "FozViper",
+          "FozPhantom",
+          "FozPrime",
+          "FozZen",
+          "FozImpact",
+          "FozStorm",
+        ],
+      };
     case "Fozeton":
       return {
         data: {

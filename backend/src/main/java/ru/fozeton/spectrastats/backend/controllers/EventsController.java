@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.fozeton.spectrastats.backend.model.PlayerStatistic;
 import ru.fozeton.spectrastats.backend.service.PlayersService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/player")
 @RequiredArgsConstructor
@@ -27,5 +29,10 @@ public class EventsController {
     public ResponseEntity<?> statistic(@Valid @RequestBody PlayerStatistic statistic) {
         playersService.updateStats(statistic);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/suggest/{nick}")
+    public ResponseEntity<List<String>> suggest(@PathVariable String nick) {
+        return ResponseEntity.ok(playersService.suggestPlayers(nick));
     }
 }

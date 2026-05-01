@@ -32,11 +32,11 @@ export const Statistic = () => {
       properties: [
         {
           name: "Выкинуто предметов",
-          value: statistic.world.DROP.TOTAL_DROP_ITEMS || 0,
+          value: statistic.world?.DROP.TOTAL_DROP_ITEMS || 0,
         },
         {
           name: "Поднято предметов",
-          value: statistic.world.PICKUP.TOTAL_PICKUP_ITEMS || 0,
+          value: statistic.world?.PICKUP.TOTAL_PICKUP_ITEMS || 0,
         },
       ],
     },
@@ -46,15 +46,15 @@ export const Statistic = () => {
       properties: [
         {
           name: "Пройденная дистанция",
-          value: statistic.survival.properties.TOTAL_DISTANCE_TRAVELED || 0,
+          value: statistic.survival?.properties.TOTAL_DISTANCE_TRAVELED || 0,
         },
         {
           name: "Всего съедено еды",
-          value: statistic.survival.EATEN.TOTAL_EATEN || 0,
+          value: statistic.survival?.EATEN.TOTAL_EATEN || 0,
         },
         {
           name: "Всего сломано экипировки",
-          value: statistic.survival.BREAK_ITEM.TOTAL_BREAK_ITEMS || 0,
+          value: statistic.survival?.BREAK_ITEM.TOTAL_BREAK_ITEMS || 0,
         },
       ],
     },
@@ -64,15 +64,15 @@ export const Statistic = () => {
       properties: [
         {
           name: "Всего создано предметов",
-          value: statistic.interact.CRAFT_ITEM.TOTAL_CRAFT_ITEMS || 0,
+          value: statistic.interact?.CRAFT_ITEM.TOTAL_CRAFT_ITEMS || 0,
         },
         {
           name: "Всего сломано блоков",
-          value: statistic.interact.MINE_BLOCK.TOTAL_BREAK_BLOCKS || 0,
+          value: statistic.interact?.MINE_BLOCK.TOTAL_BREAK_BLOCKS || 0,
         },
         {
           name: "Всего поставленно блоков",
-          value: statistic.interact.PLACED_BLOCKS.TOTAL_PLACED_BLOCKS || 0,
+          value: statistic.interact?.PLACED_BLOCKS.TOTAL_PLACED_BLOCKS || 0,
         },
       ],
     },
@@ -82,15 +82,15 @@ export const Statistic = () => {
       properties: [
         {
           name: "Всего смертей",
-          value: statistic.combat.properties.DEATHS || 0,
+          value: statistic.combat?.properties.DEATHS || 0,
         },
         {
           name: "Всего убийств",
-          value: statistic.combat.KILL_ENTITY.TOTAL_KILLS || 0,
+          value: statistic.combat?.KILL_ENTITY.TOTAL_KILLS || 0,
         },
         {
           name: "Всего убит монстрами",
-          value: statistic.combat.ENTITY_KILLED_BY.TOTAL_KILLED || 0,
+          value: statistic.combat?.ENTITY_KILLED_BY.TOTAL_KILLED || 0,
         },
       ],
     },
