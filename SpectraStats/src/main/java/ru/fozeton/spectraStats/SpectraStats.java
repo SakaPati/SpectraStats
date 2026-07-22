@@ -10,12 +10,12 @@ import ru.fozeton.spectraStats.statistic.StatsRegistry;
 import java.util.logging.Logger;
 
 public final class SpectraStats extends JavaPlugin {
-
-
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+
         Logger logger = Logger.getLogger("Minecraft");
-        HttpSender httpSender = new HttpSender(logger);
+        HttpSender httpSender = new HttpSender(this, logger);
         StatsRegistry registry = new StatsRegistry();
         StatisticCollector collector = new StatisticCollector();
 
