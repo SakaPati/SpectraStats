@@ -53,7 +53,7 @@ public class PlayerStatistic implements Listener {
                 String json = gson.toJson(statMap);
                 logger.info(json);
 
-//                    sender.postDate("/player/statistic/", json);
+                    sender.postDate("/player/statistic/", json);
             }
             registry.getMessageTracker().clear();
         }, 0, 15, TimeUnit.SECONDS);
