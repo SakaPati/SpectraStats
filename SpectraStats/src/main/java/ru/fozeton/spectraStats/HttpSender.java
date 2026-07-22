@@ -1,6 +1,6 @@
 package ru.fozeton.spectraStats;
 
-import lombok.RequiredArgsConstructor;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.net.URI;
@@ -9,11 +9,15 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.logging.Logger;
 
-@RequiredArgsConstructor
 public class HttpSender {
-    private final static String BASE_URL = "http://localhost:8080/api";
+    private final String BASE_URL;
     private final HttpClient client = HttpClient.newHttpClient();
     private final Logger logger;
+
+    public HttpSender(JavaPlugin plugin, Logger logger) {
+        this.BASE_URL = plugin.getConfig().getString("backendUrl");
+        this.logger = logger;
+    }
 
     private void executeAsync(String endpoint, RequestBuilder builder) {
         Thread.startVirtualThread(() -> {
@@ -46,10 +50,6 @@ public class HttpSender {
                 .build()
         );
     }
-//
-//    public void postPeriodic(String endpoint, String json, Duration second) {
-//        Bukkit.getScheduler().runTaskTimer(plugin, () -> postDate(endpoint, json), 0L, Tick.tick().fromDuration(second));
-//    }
 
     @FunctionalInterface
     private interface RequestBuilder {
